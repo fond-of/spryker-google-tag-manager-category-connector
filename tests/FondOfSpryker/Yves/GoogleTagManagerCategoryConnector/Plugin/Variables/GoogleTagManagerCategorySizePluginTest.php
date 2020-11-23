@@ -33,7 +33,7 @@ class GoogleTagManagerCategorySizePluginTest extends Unit
         $googleTagManagerCategoryContentTypePlugin = new GoogleTagManagerCategorySizePlugin();
         $googleTagManagerCategoryContentTypePlugin->setFactory($factoryMock);
 
-        $result = $googleTagManagerCategoryContentTypePlugin->addVariable([
+        $result = $googleTagManagerCategoryContentTypePlugin->addVariable('pageType', [
         GoogleTagManagerCategoryConstants::PARAM_CATEGORY => [
             GoogleTagManagerCategoryConstants::PARAM_PRODUCTS => [
                 'product-1', 'product-2', 'product-3',

@@ -33,7 +33,7 @@ class GoogleTagManagerCategoryIdTest extends Unit
         $googleTagManagerCategoryContentTypePlugin = new GoogleTagManagerCategoryIdPlugin();
         $googleTagManagerCategoryContentTypePlugin->setFactory($factoryMock);
 
-        $result = $googleTagManagerCategoryContentTypePlugin->addVariable([
+        $result = $googleTagManagerCategoryContentTypePlugin->addVariable('pageType', [
             GoogleTagManagerCategoryConstants::PARAM_CATEGORY => 666,
         ]);
 

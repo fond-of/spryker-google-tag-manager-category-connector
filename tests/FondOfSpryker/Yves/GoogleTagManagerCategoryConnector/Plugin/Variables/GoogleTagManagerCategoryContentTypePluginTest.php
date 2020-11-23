@@ -33,7 +33,7 @@ class GoogleTagManagerCategoryContentTypePluginTest extends Unit
         $googleTagManagerCategoryContentTypePlugin = new GoogleTagManagerCategoryContentTypePlugin();
         $googleTagManagerCategoryContentTypePlugin->setFactory($factoryMock);
 
-        $result = $googleTagManagerCategoryContentTypePlugin->addVariable([
+        $result = $googleTagManagerCategoryContentTypePlugin->addVariable('pageType', [
             GoogleTagManagerCategoryConstants::PARAM_CONTENT_TYPE => 'CONTENT_TYPE',
         ]);
 

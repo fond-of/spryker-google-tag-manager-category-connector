@@ -2,10 +2,11 @@
 
 namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector;
 
+use Codeception\Test\Unit;
 use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Model\GoogleTagManagerCategoryModelInterface;
 use Spryker\Yves\Kernel\Container;
 
-class GoogleTagManagerCategoryConnectorFactoryTest
+class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Yves\Kernel\Container
