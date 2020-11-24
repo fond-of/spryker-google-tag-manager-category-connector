@@ -7,6 +7,19 @@ use FondOfSpryker\Shared\GoogleTagManagerCategoryConnector\GoogleTagManagerCateg
 class GoogleTagManagerCategoryModel implements GoogleTagManagerCategoryModelInterface
 {
     /**
+     * @var \FondOfSpryker\Yves\GoogleTagManagerExtension\Dependency\GoogleTagManagerVariableBuilderPluginInterface[]
+     */
+    protected $googleTagManagerCategoryProductPlugins;
+
+    /**
+     * @param \FondOfSpryker\Yves\GoogleTagManagerExtension\Dependency\GoogleTagManagerVariableBuilderPluginInterface[] $googleTagManagerCategoryProductPlugins
+     */
+    public function __construct(array $googleTagManagerCategoryProductPlugins)
+    {
+        $this->googleTagManagerCategoryProductPlugins = $googleTagManagerCategoryProductPlugins;
+    }
+
+    /**
      * @param array $params
      *
      * @return array
@@ -75,6 +88,37 @@ class GoogleTagManagerCategoryModel implements GoogleTagManagerCategoryModelInte
 
         return [
             ModuleConstants::FIELD_CATEGORY_SIZE => count($params[ModuleConstants::PARAM_PRODUCTS]),
+        ];
+    }
+
+    /**
+     * @param array|string $params
+     *
+     * @return array
+     */
+    public function getCategoryProducts(string $page, array $params): array
+    {
+        if (!isset($params[ModuleConstants::PARAM_PRODUCTS])) {
+            return false;
+        }
+
+        $categoryProductCollection = [];
+
+        foreach ($params[ModuleConstants::PARAM_PRODUCTS] as $productArray) {
+            $product = [];
+
+            foreach ($this->googleTagManagerCategoryProductPlugins as $categoryProductPlugin) {
+                $product = array_merge(
+                    $product,
+                    $categoryProductPlugin->addVariable($page, $productArray)
+                );
+            }
+
+            $categoryProductCollection[] = $product;
+        }
+
+        return [
+            ModuleConstants::FIELD_CATEGORY_PRODUCTS => $categoryProductCollection,
         ];
     }
 }

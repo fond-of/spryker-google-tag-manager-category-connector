@@ -17,7 +17,7 @@ class GoogleTagManagerCategoryModelTest extends Unit
      */
     protected function _before(): void
     {
-        $this->googleTagManagerCategoryModel = new GoogleTagManagerCategoryModel();
+        $this->googleTagManagerCategoryModel = new GoogleTagManagerCategoryModel([]);
     }
 
     /**
