@@ -92,7 +92,8 @@ class GoogleTagManagerCategoryModel implements GoogleTagManagerCategoryModelInte
     }
 
     /**
-     * @param array|string $params
+     * @param string $page
+     * @param array $params
      *
      * @return array
      */

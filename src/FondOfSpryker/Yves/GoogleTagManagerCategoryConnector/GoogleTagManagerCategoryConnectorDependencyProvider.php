@@ -9,6 +9,11 @@ class GoogleTagManagerCategoryConnectorDependencyProvider extends AbstractBundle
 {
     public const PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT = 'PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT';
 
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
     public function provideDependencies(Container $container): Container
     {
         $container = $this->addGoogleTagManagerCategoryProductPlugins($container);
@@ -23,7 +28,7 @@ class GoogleTagManagerCategoryConnectorDependencyProvider extends AbstractBundle
      */
     protected function addGoogleTagManagerCategoryProductPlugins(Container $container): Container
     {
-        $container->set(static::PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT, function () {
+        $container->set(static::PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT, static function () {
             return $this->getGoogleTagManagerCategoryProductPlugins();
         });
 
