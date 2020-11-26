@@ -28,7 +28,7 @@ class GoogleTagManagerCategoryConnectorDependencyProvider extends AbstractBundle
      */
     protected function addGoogleTagManagerCategoryProductPlugins(Container $container): Container
     {
-        $container->set(static::PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT, static function () {
+        $container->set(static::PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT, function () {
             return $this->getGoogleTagManagerCategoryProductPlugins();
         });
 

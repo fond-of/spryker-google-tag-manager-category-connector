@@ -33,7 +33,7 @@ interface GoogleTagManagerCategoryModelInterface
     public function getCategorySize(array $params): array;
 
     /**
-     * @param array|string $params
+     * @param array $params
      *
      * @return array
      */

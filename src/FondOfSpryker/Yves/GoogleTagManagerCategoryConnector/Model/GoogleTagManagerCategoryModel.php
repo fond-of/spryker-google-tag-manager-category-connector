@@ -100,7 +100,7 @@ class GoogleTagManagerCategoryModel implements GoogleTagManagerCategoryModelInte
     public function getCategoryProducts(string $page, array $params): array
     {
         if (!isset($params[ModuleConstants::PARAM_PRODUCTS])) {
-            return false;
+            return [];
         }
 
         $categoryProductCollection = [];
