@@ -21,7 +21,8 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
     /**
      * @return void
      */
-    protected function _before(): void {
+    protected function _before(): void
+    {
         $this->containerMock = $this->getMockBuilder(Container::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -35,6 +36,14 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
      */
     public function testCreateGoogleTagManagerCategoryModel(): void
     {
+        $this->containerMock->expects($this->atLeastOnce())
+            ->method('has')
+            ->willReturn(true);
+
+        $this->containerMock->expects($this->atLeastOnce())
+            ->method('get')
+            ->willReturn([]);
+
         $this->assertInstanceOf(
             GoogleTagManagerCategoryModelInterface::class,
             $this->factory->createGoogleTagManagerCategoryModel()

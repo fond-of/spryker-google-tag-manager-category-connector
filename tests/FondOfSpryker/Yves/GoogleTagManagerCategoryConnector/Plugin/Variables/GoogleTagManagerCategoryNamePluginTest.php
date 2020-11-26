@@ -29,11 +29,8 @@ class GoogleTagManagerCategoryNamePluginTest extends Unit
         $googleTagManagerCategoryConnectorModel->expects($this->once())
             ->method('getCategoryName')
             ->willReturn([
-                GoogleTagManagerCategoryConstants::PARAM_CATEGORY => [
-                    GoogleTagManagerCategoryConstants::PARAM_CATEGORY_NAME => 'category name'
-                ]
-            ]
-        );
+                GoogleTagManagerCategoryConstants::FIELD_CATEGORY_NAME => 'category name'
+            ]);
 
         $googleTagManagerCategoryContentTypePlugin = new GoogleTagManagerCategoryNamePlugin();
         $googleTagManagerCategoryContentTypePlugin->setFactory($factoryMock);
@@ -41,7 +38,7 @@ class GoogleTagManagerCategoryNamePluginTest extends Unit
         $result = $googleTagManagerCategoryContentTypePlugin->addVariable('pageType', [
             GoogleTagManagerCategoryConstants::PARAM_CATEGORY => [
                 GoogleTagManagerCategoryConstants::PARAM_CATEGORY_NAME => 'category name',
-            ]
+            ],
         ]);
 
         $this->assertIsArray($result);
