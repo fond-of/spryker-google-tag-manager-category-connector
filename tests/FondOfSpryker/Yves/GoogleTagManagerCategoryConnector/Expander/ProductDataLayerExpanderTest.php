@@ -6,7 +6,7 @@ use Codeception\Test\Unit;
 use FondOfSpryker\Shared\GoogleTagManagerCategoryConnector\GoogleTagManagerCategoryConstants as ModuleConstants;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 
-class CategoryProductDataLayerExpanderTest extends Unit
+class ProductDataLayerExpanderTest extends Unit
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface
@@ -14,7 +14,7 @@ class CategoryProductDataLayerExpanderTest extends Unit
     protected $moneyPluginMock;
 
     /**
-     * @var CategoryProductDataLayerExpanderInterface
+     * @var ProductDataLayerExpanderInterface
      */
     protected $categoryProductDataLayerExpander;
 
@@ -27,7 +27,7 @@ class CategoryProductDataLayerExpanderTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->categoryProductDataLayerExpander = new CategoryProductDataLayerExpander($this->moneyPluginMock);
+        $this->categoryProductDataLayerExpander = new ProductDataLayerExpander($this->moneyPluginMock);
     }
 
     /**

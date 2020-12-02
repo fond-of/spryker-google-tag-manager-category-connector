@@ -58,23 +58,4 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
             $this->factory->getMoneyPlugin()
         );
     }
-
-    /**
-     * @return void
-     */
-    /*public function testCreateGoogleTagManagerCategoryModel(): void
-    {
-        $this->containerMock->expects($this->atLeastOnce())
-            ->method('has')
-            ->willReturn(true);
-
-        $this->containerMock->expects($this->atLeastOnce())
-            ->method('get')
-            ->willReturn([]);
-
-        $this->assertInstanceOf(
-            GoogleTagManagerCategoryModelInterface::class,
-            $this->factory->createCategoryDataLayerExpander()
-        );
-    }*/
 }

@@ -4,17 +4,17 @@ namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander;
 
 use FondOfSpryker\Shared\GoogleTagManagerCategoryConnector\GoogleTagManagerCategoryConstants as ModuleConstants;
 
-class CategoryDataLayerExpander implements CategoryDataLayerExpanderInterface
+class DataLayerExpander implements DataLayerExpanderInterface
 {
     /**
-     * @var \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryProductDataLayerExpanderInterface
+     * @var \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\ProductDataLayerExpanderInterface
      */
     protected $productExpander;
 
     /**
-     * @param \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryProductDataLayerExpanderInterface $productExpander
+     * @param \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\ProductDataLayerExpanderInterface $productExpander
      */
-    public function __construct(CategoryProductDataLayerExpanderInterface $productExpander)
+    public function __construct(ProductDataLayerExpanderInterface $productExpander)
     {
         $this->productExpander = $productExpander;
     }

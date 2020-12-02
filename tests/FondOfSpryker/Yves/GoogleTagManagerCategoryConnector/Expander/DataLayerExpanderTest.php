@@ -5,15 +5,15 @@ namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander;
 use Codeception\Test\Unit;
 use FondOfSpryker\Shared\GoogleTagManagerCategoryConnector\GoogleTagManagerCategoryConstants as ModuleConstants;
 
-class CategoryDataLayerExpanderTest extends Unit
+class DataLayerExpanderTest extends Unit
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|CategoryProductDataLayerExpanderInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|ProductDataLayerExpanderInterface
      */
     protected $productExpanderMock;
 
     /**
-     * @var CategoryDataLayerExpanderInterface
+     * @var DataLayerExpanderInterface
      */
     protected $categoryDataLayerExpander;
 
@@ -22,11 +22,11 @@ class CategoryDataLayerExpanderTest extends Unit
      */
     protected function _before(): void
     {
-        $this->productExpanderMock = $this->getMockBuilder(CategoryProductDataLayerExpanderInterface::class)
+        $this->productExpanderMock = $this->getMockBuilder(ProductDataLayerExpanderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->categoryDataLayerExpander = new CategoryDataLayerExpander($this->productExpanderMock);
+        $this->categoryDataLayerExpander = new DataLayerExpander($this->productExpanderMock);
     }
 
     /**

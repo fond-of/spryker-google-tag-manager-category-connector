@@ -2,7 +2,7 @@
 
 namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander;
 
-interface CategoryProductDataLayerExpanderInterface
+interface ProductDataLayerExpanderInterface
 {
     /**
      * @param array $twigVariableBag

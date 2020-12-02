@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Plugin\DataLayer;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryDataLayerExpanderInterface;
+use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\DataLayerExpanderInterface;
 use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\GoogleTagManagerCategoryConnectorFactory;
 
 class CategoryDataLayerExpanderPluginExpanderPluginTest extends Unit
@@ -14,7 +14,7 @@ class CategoryDataLayerExpanderPluginExpanderPluginTest extends Unit
     protected $factoryMock;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryDataLayerExpanderInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\DataLayerExpanderInterface
      */
     protected $categoryDataLayerExpanderMock;
 
@@ -32,7 +32,7 @@ class CategoryDataLayerExpanderPluginExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->categoryDataLayerExpanderMock = $this->getMockBuilder(CategoryDataLayerExpanderInterface::class)
+        $this->categoryDataLayerExpanderMock = $this->getMockBuilder(DataLayerExpanderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -54,7 +54,7 @@ class CategoryDataLayerExpanderPluginExpanderPluginTest extends Unit
     public function testExpand(): void
     {
         $this->factoryMock->expects($this->once())
-            ->method('createCategoryDataLayerExpander')
+            ->method('createDataLayerExpander')
             ->willReturn($this->categoryDataLayerExpanderMock);
 
         $this->assertIsArray($this->plugin->expand('pageType', [], []));

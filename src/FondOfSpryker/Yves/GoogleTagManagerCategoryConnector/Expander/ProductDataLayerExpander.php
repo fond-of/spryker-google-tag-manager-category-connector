@@ -5,7 +5,7 @@ namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander;
 use FondOfSpryker\Shared\GoogleTagManagerCategoryConnector\GoogleTagManagerCategoryConstants as ModuleConstants;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 
-class CategoryProductDataLayerExpander implements CategoryProductDataLayerExpanderInterface
+class ProductDataLayerExpander implements ProductDataLayerExpanderInterface
 {
     /**
      * @var \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface

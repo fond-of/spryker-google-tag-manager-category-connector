@@ -33,7 +33,7 @@ class CategoryDataLayerExpanderPluginExpanderPlugin extends AbstractPlugin imple
     public function expand(string $page, array $twigVariableBag, array $dataLayer): array
     {
         return $this->getFactory()
-            ->createCategoryDataLayerExpander()
+            ->createDataLayerExpander()
             ->expand($page, $twigVariableBag, $dataLayer);
     }
 }

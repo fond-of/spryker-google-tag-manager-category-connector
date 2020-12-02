@@ -2,29 +2,29 @@
 
 namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector;
 
-use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryDataLayerExpander;
-use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryDataLayerExpanderInterface;
-use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryProductDataLayerExpander;
-use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryProductDataLayerExpanderInterface;
+use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\DataLayerExpander;
+use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\DataLayerExpanderInterface;
+use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\ProductDataLayerExpander;
+use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\ProductDataLayerExpanderInterface;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class GoogleTagManagerCategoryConnectorFactory extends AbstractFactory
 {
     /**
-     * @return \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryDataLayerExpanderInterface
+     * @return \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\DataLayerExpanderInterface
      */
-    public function createCategoryDataLayerExpander(): CategoryDataLayerExpanderInterface
+    public function createDataLayerExpander(): DataLayerExpanderInterface
     {
-        return new CategoryDataLayerExpander($this->createCategoryProductDataLayerExpander());
+        return new DataLayerExpander($this->createProductDataLayerExpander());
     }
 
     /**
-     * @return \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\CategoryProductDataLayerExpanderInterface
+     * @return \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Expander\ProductDataLayerExpanderInterface
      */
-    public function createCategoryProductDataLayerExpander(): CategoryProductDataLayerExpanderInterface
+    public function createProductDataLayerExpander(): ProductDataLayerExpanderInterface
     {
-        return new CategoryProductDataLayerExpander($this->getMoneyPlugin());
+        return new ProductDataLayerExpander($this->getMoneyPlugin());
     }
 
     /**
