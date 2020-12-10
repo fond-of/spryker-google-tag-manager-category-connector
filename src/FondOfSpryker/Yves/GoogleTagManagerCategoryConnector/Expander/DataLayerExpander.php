@@ -33,6 +33,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
         $dataLayer[ModuleConstants::FIELD_CATEGORY_NAME] = $this->getName($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_SIZE] = $this->getSize($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_PRODUCTS] = $this->getProducts($twigVariableBag);
+        $dataLayer[ModuleConstants::FIELD_CATEGORY_PRODUCT_SKUS] = $this->getProductSkus($twigVariableBag);
 
         return $dataLayer;
     }
@@ -54,16 +55,16 @@ class DataLayerExpander implements DataLayerExpanderInterface
     /**
      * @param array $twigVariableBag
      *
-     * @return string
+     * @return null|int
      */
-    protected function getId(array $twigVariableBag): string
+    protected function getId(array $twigVariableBag): ?int
     {
         if (!isset($twigVariableBag[ModuleConstants::PARAM_CATEGORY])) {
-            return '';
+            return null;
         }
 
         if (!isset($twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_ID_CATEGORY])) {
-            return '$dataLayer';
+            return null;
         }
 
         return $twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_ID_CATEGORY];
@@ -106,7 +107,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
      *
      * @return array
      */
-    public function getProducts(array $twigVariableBag): array
+    protected function getProducts(array $twigVariableBag): array
     {
         if (!isset($twigVariableBag[ModuleConstants::PARAM_PRODUCTS])) {
             return [];
@@ -119,5 +120,29 @@ class DataLayerExpander implements DataLayerExpanderInterface
         }
 
         return $categoryProductCollection;
+    }
+
+    /**
+     * @param array $twigVariableBag
+     *
+     * @return array
+     */
+    protected function getProductSkus(array $twigVariableBag): array
+    {
+        $skus = [];
+
+        if (!isset($twigVariableBag[ModuleConstants::PARAM_PRODUCTS])) {
+            return [];
+        }
+
+        foreach ($twigVariableBag[ModuleConstants::PARAM_PRODUCTS] as $productArray) {
+            if (!isset($productArray[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU])) {
+                continue;
+            }
+
+            $skus[] = str_replace('ABSTRACT-', '', strtoupper($productArray[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU]));
+        }
+
+        return $skus;
     }
 }

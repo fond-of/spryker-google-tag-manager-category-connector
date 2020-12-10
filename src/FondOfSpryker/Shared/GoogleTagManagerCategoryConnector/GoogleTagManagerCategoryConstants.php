@@ -9,6 +9,7 @@ interface GoogleTagManagerCategoryConstants
     public const FIELD_CATEGORY_NAME = 'categoryName';
     public const FIELD_CATEGORY_SIZE = 'categorySize';
     public const FIELD_CATEGORY_PRODUCTS = 'categoryProducts';
+    public const FIELD_CATEGORY_PRODUCT_SKUS = 'products';
 
     public const FIELD_PRODUCT_ID_ABSTRACT = 'idProductAbstract';
     public const FIELD_PRODUCT_PRICE = 'price';
