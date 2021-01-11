@@ -4,10 +4,11 @@ namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector;
 
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\Money\Plugin\MoneyPlugin;
 
 class GoogleTagManagerCategoryConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT = 'PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT';
+    public const PLUGIN_MONEY = 'PLUGIN_MONEY';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -16,7 +17,7 @@ class GoogleTagManagerCategoryConnectorDependencyProvider extends AbstractBundle
      */
     public function provideDependencies(Container $container): Container
     {
-        $container = $this->addGoogleTagManagerCategoryProductPlugins($container);
+        $container = $this->addMoneyPlugin($container);
 
         return $container;
     }
@@ -26,20 +27,12 @@ class GoogleTagManagerCategoryConnectorDependencyProvider extends AbstractBundle
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addGoogleTagManagerCategoryProductPlugins(Container $container): Container
+    protected function addMoneyPlugin(Container $container): Container
     {
-        $container->set(static::PLUGINS_GOOGLE_TAG_MANAGER_CATEGORY_PRODUCT, function () {
-            return $this->getGoogleTagManagerCategoryProductPlugins();
+        $container->set(static::PLUGIN_MONEY, static function () {
+            return new MoneyPlugin();
         });
 
         return $container;
-    }
-
-    /**
-     * @return \FondOfSpryker\Yves\GoogleTagManagerExtension\Dependency\GoogleTagManagerVariableBuilderPluginInterface[];
-     */
-    protected function getGoogleTagManagerCategoryProductPlugins(): array
-    {
-        return [];
     }
 }

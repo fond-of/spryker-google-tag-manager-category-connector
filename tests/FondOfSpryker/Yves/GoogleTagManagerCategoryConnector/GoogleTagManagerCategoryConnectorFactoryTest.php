@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Yves\GoogleTagManagerCategoryConnector;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\Model\GoogleTagManagerCategoryModelInterface;
+use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\Container;
 
 class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
@@ -12,6 +12,11 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
      * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Yves\Kernel\Container
      */
     protected $containerMock;
+
+    /**
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface
+     */
+    protected $moneyPluginMock;
 
     /**
      * @var \FondOfSpryker\Yves\GoogleTagManagerCategoryConnector\GoogleTagManagerCategoryConnectorFactory
@@ -27,6 +32,10 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
+        $this->moneyPluginMock = $this->getMockBuilder(MoneyPluginInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $this->factory = new GoogleTagManagerCategoryConnectorFactory();
         $this->factory->setContainer($this->containerMock);
     }
@@ -34,7 +43,7 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testCreateGoogleTagManagerCategoryModel(): void
+    public function testGetMoneyPlugin(): void
     {
         $this->containerMock->expects($this->atLeastOnce())
             ->method('has')
@@ -42,11 +51,11 @@ class GoogleTagManagerCategoryConnectorFactoryTest extends Unit
 
         $this->containerMock->expects($this->atLeastOnce())
             ->method('get')
-            ->willReturn([]);
+            ->willReturn($this->moneyPluginMock);
 
         $this->assertInstanceOf(
-            GoogleTagManagerCategoryModelInterface::class,
-            $this->factory->createGoogleTagManagerCategoryModel()
+            MoneyPluginInterface::class,
+            $this->factory->getMoneyPlugin()
         );
     }
 }
