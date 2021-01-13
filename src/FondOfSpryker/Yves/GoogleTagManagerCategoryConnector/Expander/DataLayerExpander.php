@@ -55,7 +55,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
     /**
      * @param array $twigVariableBag
      *
-     * @return null|int
+     * @return int|null
      */
     protected function getId(array $twigVariableBag): ?int
     {
