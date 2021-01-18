@@ -37,7 +37,7 @@ class DataLayerExpanderTest extends Unit
         $result = $this->categoryDataLayerExpander->expand('pageType', [], []);
 
         $this->assertArrayHasKey(ModuleConstants::FIELD_CONTENT_TYPE, $result);
-        $this->assertArrayHasKey(ModuleConstants::FIELD_ID_CATEGORY, $result);
+        $this->assertArrayHasKey(ModuleConstants::FIELD_CATEGORY_ID, $result);
         $this->assertArrayHasKey(ModuleConstants::FIELD_CATEGORY_NAME, $result);
         $this->assertArrayHasKey(ModuleConstants::FIELD_CATEGORY_SIZE, $result);
         $this->assertArrayHasKey(ModuleConstants::FIELD_CATEGORY_PRODUCTS, $result);

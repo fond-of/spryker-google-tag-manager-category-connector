@@ -29,7 +29,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
     public function expand(string $page, array $twigVariableBag, array $dataLayer): array
     {
         $dataLayer[ModuleConstants::FIELD_CONTENT_TYPE] = $this->getContentType($twigVariableBag);
-        $dataLayer[ModuleConstants::FIELD_ID_CATEGORY] = $this->getId($twigVariableBag);
+        $dataLayer[ModuleConstants::FIELD_CATEGORY_ID] = $this->getId($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_NAME] = $this->getName($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_SIZE] = $this->getSize($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_PRODUCTS] = $this->getProducts($twigVariableBag);
@@ -55,7 +55,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
     /**
      * @param array $twigVariableBag
      *
-     * @return null|int
+     * @return int|null
      */
     protected function getId(array $twigVariableBag): ?int
     {
