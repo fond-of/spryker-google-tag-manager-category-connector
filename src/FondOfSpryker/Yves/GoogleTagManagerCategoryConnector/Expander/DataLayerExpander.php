@@ -28,6 +28,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
      */
     public function expand(string $page, array $twigVariableBag, array $dataLayer): array
     {
+        $dataLayer[ModuleConstants::FIELD_CATEGORY_PAGE_TYPE] = $this->getPageType($twigVariableBag, $dataLayer);
         $dataLayer[ModuleConstants::FIELD_CONTENT_TYPE] = $this->getContentType($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_ID] = $this->getId($twigVariableBag);
         $dataLayer[ModuleConstants::FIELD_CATEGORY_NAME] = $this->getName($twigVariableBag);
@@ -43,13 +44,31 @@ class DataLayerExpander implements DataLayerExpanderInterface
      *
      * @return string
      */
+    protected function getPageType(array $twigVariableBag, array $dataLayer): string
+    {
+        if (isset($twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_PAGE_TYPE])) {
+            return $twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_PAGE_TYPE];
+        }
+
+        if (isset($dataLayer[ModuleConstants::FIELD_CATEGORY_PAGE_TYPE])) {
+            return $dataLayer[ModuleConstants::FIELD_CATEGORY_PAGE_TYPE];
+        }
+
+        return '';
+    }
+
+    /**
+     * @param array $twigVariableBag
+     *
+     * @return string
+     */
     protected function getContentType(array $twigVariableBag): string
     {
-        if (!isset($twigVariableBag[ModuleConstants::PARAM_CONTENT_TYPE])) {
+        if (!isset($twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_CONTENT_TYPE])) {
             return '';
         }
 
-        return $twigVariableBag[ModuleConstants::PARAM_CONTENT_TYPE];
+        return $twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_CONTENT_TYPE];
     }
 
     /**
