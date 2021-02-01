@@ -8,6 +8,7 @@ interface GoogleTagManagerCategoryConstants
     public const FIELD_CATEGORY_ID = 'categoryId';
     public const FIELD_CATEGORY_NAME = 'categoryName';
     public const FIELD_CATEGORY_SIZE = 'categorySize';
+    public const FIELD_CATEGORY_PAGE_TYPE = 'pageType';
     public const FIELD_CATEGORY_PRODUCTS = 'categoryProducts';
     public const FIELD_CATEGORY_PRODUCT_SKUS = 'products';
 
@@ -16,6 +17,7 @@ interface GoogleTagManagerCategoryConstants
     public const FIELD_PRODUCT_NAME = 'name';
     public const FIELD_PRODUCT_SKU = 'sku';
 
+    public const PARAM_PAGE_TYPE = 'page_type';
     public const PARAM_CONTENT_TYPE = 'contentType';
     public const PARAM_CATEGORY = 'category';
     public const PARAM_ID_CATEGORY = 'id_category';
