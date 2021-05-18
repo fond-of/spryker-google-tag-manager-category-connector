@@ -13,7 +13,7 @@ class ProductDataLayerExpander implements ProductDataLayerExpanderInterface
     protected $moneyPlugin;
 
     /**
-     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface
+     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface $moneyPlugin
      */
     public function __construct(MoneyPluginInterface $moneyPlugin)
     {
