@@ -30,4 +30,6 @@ interface GoogleTagManagerCategoryConstants
     public const PARAM_PRODUCT_ATTRIBUTE_ABSTRACT_NAME = 'abstract_name';
     public const PARAM_PRODUCT_ATTRIBUTE_NAME_UNTRANSLATED = 'name_untranslated';
     public const PARAM_PRODUCT_ABSTRACT_SKU = 'abstract_sku';
+
+    public const CATEGORY_NAME_PREFIX = 'ID%s_';
 }

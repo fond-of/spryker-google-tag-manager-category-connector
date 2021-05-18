@@ -96,6 +96,9 @@ class DataLayerExpander implements DataLayerExpanderInterface
      */
     protected function getName(array $twigVariableBag): string
     {
+        $prefix = '';
+        $idCategory = $this->getId($twigVariableBag);
+
         if (!isset($twigVariableBag[ModuleConstants::PARAM_CATEGORY])) {
             return '';
         }
@@ -104,7 +107,11 @@ class DataLayerExpander implements DataLayerExpanderInterface
             return '';
         }
 
-        return $twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_CATEGORY_NAME];
+        if ($idCategory !== null) {
+            $prefix = sprintf(ModuleConstants::CATEGORY_NAME_PREFIX, $idCategory);
+        }
+
+        return $prefix.$twigVariableBag[ModuleConstants::PARAM_CATEGORY][ModuleConstants::PARAM_CATEGORY_NAME];
     }
 
     /**
